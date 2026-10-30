@@ -35,11 +35,17 @@ export class SceneOverlay extends EventEmitter {
       <!-- Top Center Hub (Clean Minimalist Floating Pill Dock) -->
       <header class="hub-header">
         <div class="hub-days-pill" id="hub-days-pill" title="Momen Bersama Nur Syarifa Syuhada">
-          <span class="hub-days-text">${this.daysTogether.toLocaleString()} Hari Bersama</span>
+          <span class="hub-days-text">
+            <span class="text-full">${this.daysTogether.toLocaleString()} Hari Bersama</span>
+            <span class="text-short">💕 ${this.daysTogether.toLocaleString()} Hari</span>
+          </span>
         </div>
 
         <div class="hub-petal-badge ${this.hasGoldenPetal ? 'unlocked' : ''}" id="hub-petal-badge" title="Kelopak Emas Hub">
-          <span class="hub-petal-text" id="hub-petal-text">${this.hasGoldenPetal ? '1 / 1 Emas' : '0 / 1 Emas'}</span>
+          <span class="hub-petal-text" id="hub-petal-text">
+            <span class="text-full">${this.hasGoldenPetal ? '1 / 1 Emas' : '0 / 1 Emas'}</span>
+            <span class="text-short">${this.hasGoldenPetal ? '🌸 1/1' : '🌸 0/1'}</span>
+          </span>
         </div>
 
         <button class="hub-music-btn" id="btn-toggle-bgm" aria-label="Putar Musik Latar" title="Putar Musik Latar">
@@ -52,15 +58,15 @@ export class SceneOverlay extends EventEmitter {
         </button>
 
         <button class="hub-cake-btn" id="btn-open-cake-hub" aria-label="Tiup Lilin" title="Tiup Lilin Ulang Tahun">
-          <span class="hub-btn-label">Tiup Lilin</span>
+          <span class="hub-btn-label">🎂 Tiup Lilin</span>
         </button>
 
         <button class="hub-game-btn" id="btn-open-minigame" aria-label="Mainkan Mini Game">
-          <span class="hub-btn-label">Game</span>
+          <span class="hub-btn-label">🎮 Game</span>
         </button>
 
         <button class="hub-letter-btn ${this.hasLetterRead ? 'read' : ''}" id="btn-open-letter-hub" aria-label="Buka Surat Ucapan">
-          <span class="hub-btn-label">Surat</span>
+          <span class="hub-btn-label">💌 Surat</span>
         </button>
       </header>
 
@@ -68,11 +74,17 @@ export class SceneOverlay extends EventEmitter {
       <nav class="chapter-dock">
         <button class="chapter-btn active" data-progress="0.0">
           <span class="chapter-num">01</span>
-          <span class="chapter-title">Taman Sakura</span>
+          <span class="chapter-title">
+            <span class="text-full">Taman Sakura</span>
+            <span class="text-short">Taman Sakura</span>
+          </span>
         </button>
         <button class="chapter-btn letter-nav-btn" data-progress="1.0" id="btn-chapter-letter">
           <span class="chapter-num">02</span>
-          <span class="chapter-title">Surat Ucapan</span>
+          <span class="chapter-title">
+            <span class="text-full">Surat Ucapan</span>
+            <span class="text-short">Surat Ucapan</span>
+          </span>
         </button>
       </nav>
 
@@ -89,7 +101,7 @@ export class SceneOverlay extends EventEmitter {
 
       <!-- Controls & Toggle Fallback -->
       <div class="overlay-controls">
-        <button class="ctrl-btn" id="btn-toggle-fullscreen" aria-label="Layar Penuh (F)" title="Layar Penuh (Tekan F)">
+        <button class="ctrl-btn mobile-hide" id="btn-toggle-fullscreen" aria-label="Layar Penuh (F)" title="Layar Penuh (Tekan F)">
           <span class="ctrl-icon">MAX</span>
           <span class="text-full">Layar Penuh</span>
           <span class="text-short">Penuh</span>
@@ -105,7 +117,7 @@ export class SceneOverlay extends EventEmitter {
           <span class="fx-dot"></span>
           <span id="fx-status-text">
             <span class="text-full">Post-Processing: ON</span>
-            <span class="text-short">FX: ON</span>
+            <span class="text-short">FX</span>
           </span>
         </button>
       </div>

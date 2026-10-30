@@ -381,397 +381,6 @@ body.ui-hidden .zen-restore-btn {
   100% { transform: translate(-50%, 8px); opacity: 0; }
 }
 
-/* ==========================================================================
-   Mobile & Responsive Adaptations
-   ========================================================================== */
-@media (max-width: 768px) {
-  .text-full {
-    display: none !important;
-  }
-  .text-short {
-    display: inline !important;
-  }
-
-  /* 1. HUD & Controls (Safe Area Integrated) */
-  /* Perf HUD hidden by default on mobile so it doesn't clutter screen */
-  .perf-hud {
-    display: none !important;
-  }
-  .perf-hud.debug-visible {
-    display: flex !important;
-    top: calc(52px + var(--sat));
-    left: calc(8px + var(--sal));
-    min-width: unset;
-    z-index: 55;
-  }
-  .perf-hud.collapsed {
-    padding: 5px 10px;
-    font-size: 0.72rem;
-  }
-
-  /* 2. Top Hub Header: Clean Top Row */
-  .hub-header {
-    top: calc(8px + var(--sat));
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100vw - 16px - var(--sal) - var(--sar));
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scroll-snap-type: x proximity;
-    padding: 5px 7px;
-    gap: 6px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--pink-border);
-    box-shadow: 0 4px 16px rgba(230, 77, 120, 0.12);
-    touch-action: pan-x;
-    z-index: 60;
-  }
-  .hub-header::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hub-days-pill,
-  .hub-petal-badge,
-  .hub-music-btn,
-  .hub-cake-btn,
-  .hub-game-btn,
-  .hub-letter-btn,
-  .hub-easter-pill {
-    padding: 6px 11px;
-    font-size: 0.72rem;
-    gap: 5px;
-    flex-shrink: 0;
-    min-height: 36px;
-    scroll-snap-align: start;
-    touch-action: manipulation;
-  }
-  .hub-days-icon,
-  .hub-petal-icon,
-  .hub-game-icon,
-  .hub-letter-icon {
-    font-size: 0.88rem;
-  }
-
-  /* 3. Floating Overlay Controls (Neat pills below Hub) */
-  .overlay-controls {
-    top: calc(54px + var(--sat));
-    right: calc(8px + var(--sar));
-    z-index: 55;
-    gap: 5px;
-  }
-  .ctrl-btn,
-  .fx-toggle-btn {
-    padding: 5px 9px;
-    font-size: 0.7rem;
-    gap: 4px;
-    min-height: 32px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    touch-action: manipulation;
-  }
-
-  /* 4. Bottom Chapter Dock */
-  .chapter-dock {
-    bottom: calc(10px + var(--sab));
-    width: calc(100vw - 20px - var(--sal) - var(--sar));
-    max-width: 420px;
-    padding: 4px 6px;
-    gap: 4px;
-    justify-content: space-between;
-    box-shadow: 0 6px 20px rgba(230, 77, 120, 0.15);
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .chapter-btn {
-    flex: 1;
-    min-height: 44px;
-    padding: 8px 6px;
-    font-size: 0.73rem;
-    gap: 5px;
-    justify-content: center;
-    white-space: nowrap;
-    touch-action: manipulation;
-  }
-
-  /* 5. Scroll / Swipe Prompt & Floating Mini Timeline */
-  .scroll-prompt {
-    bottom: calc(68px + var(--sab));
-    font-size: 0.7rem;
-    gap: 6px;
-    pointer-events: none;
-  }
-  .mini-timeline {
-    position: fixed;
-    right: calc(10px + var(--sar));
-    top: auto;
-    bottom: calc(68px + var(--sab));
-    transform: none;
-    max-width: calc(100vw - 20px);
-    z-index: 50;
-  }
-  .mini-timeline.collapsed {
-    padding: 6px 12px;
-  }
-  .mini-timeline.collapsed .timeline-body {
-    display: none;
-  }
-  .mini-timeline:not(.collapsed) {
-    max-height: 48vh;
-    width: 230px;
-    bottom: calc(68px + var(--sab));
-  }
-
-  /* 6. Modals & Dialogs (Safe Area & Viewport Bound) */
-  .story-modal-overlay,
-  .letter-modal-overlay,
-  .game-modal-overlay,
-  .easter-modal-overlay,
-  .candle-modal-overlay {
-    padding: calc(10px + var(--sat)) calc(10px + var(--sar)) calc(12px + var(--sab)) calc(10px + var(--sal));
-  }
-
-  .story-card,
-  .letter-card,
-  .game-card,
-  .easter-card,
-  .candle-blow-card {
-    width: 100%;
-    max-width: calc(100vw - 20px);
-    max-height: calc(100dvh - 24px - var(--sat) - var(--sab));
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: auto;
-  }
-
-  .story-close-btn,
-  .letter-close-btn,
-  .game-close-btn,
-  .easter-close-btn,
-  .candle-close-btn {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    font-size: 1.4rem;
-    touch-action: manipulation;
-  }
-
-  /* 7. Garden Interactive Toast */
-  .garden-toast {
-    top: calc(56px + var(--sat));
-    max-width: calc(100vw - 32px);
-    font-size: 0.82rem;
-    padding: 8px 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Ultra-compact Hub */
-  .hub-header {
-    top: calc(8px + var(--sat));
-    gap: 5px;
-    padding: 4px 6px;
-  }
-  .hub-days-pill,
-  .hub-petal-badge,
-  .hub-music-btn,
-  .hub-cake-btn,
-  .hub-game-btn,
-  .hub-letter-btn,
-  .hub-easter-pill {
-    padding: 5px 9px;
-    font-size: 0.69rem;
-    min-height: 34px;
-  }
-
-  /* Dock refinement */
-  .chapter-dock {
-    max-width: 365px;
-    padding: 3px 4px;
-    gap: 3px;
-  }
-  .chapter-btn {
-    padding: 7px 4px;
-    font-size: 0.69rem;
-    gap: 3px;
-  }
-  .chapter-num {
-    font-size: 0.68rem;
-  }
-
-  /* Letter Card mobile typography */
-  .letter-card {
-    padding: 22px 16px 16px 16px;
-    border-radius: 16px;
-    border-width: 2px;
-  }
-  .letter-title {
-    font-size: 1.15rem;
-    line-height: 1.35;
-  }
-  .letter-to {
-    font-size: 0.8rem;
-  }
-  .letter-paper {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    gap: 12px;
-  }
-  .letter-paragraph {
-    text-indent: 1em;
-    text-align: left;
-  }
-  .letter-footer {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .letter-action-btn {
-    width: 100%;
-    min-height: 44px;
-    font-size: 0.82rem;
-    padding: 10px 14px;
-    touch-action: manipulation;
-  }
-
-  /* Story Card mobile refinement */
-  .story-card {
-    padding: 18px 14px;
-    border-radius: 16px;
-  }
-  .story-title {
-    font-size: 1.15rem;
-  }
-  .story-polaroid-frame {
-    padding: 10px 10px 12px 10px;
-  }
-  .story-img-container {
-    aspect-ratio: 4 / 3;
-    max-height: 190px;
-  }
-  .story-full-text {
-    font-size: 0.84rem;
-    line-height: 1.5;
-  }
-  .story-footer {
-    gap: 6px;
-  }
-  .story-nav-btn,
-  .story-action-btn {
-    min-height: 44px;
-    font-size: 0.74rem;
-    padding: 8px 10px;
-    touch-action: manipulation;
-  }
-
-  /* Candle Modal Mobile Refinement */
-  .candle-blow-card {
-    padding: 18px 14px;
-    border-radius: 18px;
-    gap: 10px;
-  }
-  .candle-title {
-    font-size: 1.15rem;
-  }
-  .candle-instruction {
-    font-size: 0.82rem;
-    line-height: 1.4;
-  }
-  .candle-sens-wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    width: 100%;
-  }
-  .candle-sens-btns {
-    width: 100%;
-    display: flex;
-    gap: 4px;
-  }
-  .candle-sens-pill {
-    flex: 1;
-    text-align: center;
-    padding: 6px 3px;
-    font-size: 0.68rem;
-    white-space: nowrap;
-    touch-action: manipulation;
-  }
-  .candle-actions {
-    width: 100%;
-    gap: 8px;
-  }
-  .candle-action-btn {
-    width: 100%;
-    min-height: 44px;
-    justify-content: center;
-    padding: 10px 14px;
-    font-size: 0.82rem;
-    touch-action: manipulation;
-  }
-
-  /* Petal Catch Game mobile card */
-  .game-card {
-    padding: 14px 12px;
-    border-radius: 16px;
-    gap: 10px;
-  }
-  .game-title {
-    font-size: 1.05rem;
-  }
-  .game-canvas-wrapper {
-    aspect-ratio: 360 / 420;
-    max-height: min(380px, calc(100dvh - 210px));
-  }
-  .touch-ctrl-btn {
-    min-height: 46px;
-    font-size: 0.82rem;
-    padding: 10px 8px;
-    touch-action: manipulation;
-  }
-
-  /* Easter Egg modal */
-  .easter-card {
-    padding: 20px 16px;
-    border-radius: 16px;
-  }
-  .easter-title {
-    font-size: 1.1rem;
-  }
-  .easter-quote {
-    font-size: 0.88rem;
-  }
-  .easter-claim-btn {
-    min-height: 44px;
-    width: 100%;
-    font-size: 0.82rem;
-    touch-action: manipulation;
-  }
-}
-
-@media (max-width: 380px) {
-  .chapter-btn .chapter-title {
-    display: none;
-  }
-  .chapter-btn {
-    padding: 8px 10px;
-    gap: 0;
-  }
-  .chapter-btn[data-progress="0.0"]::after { content: ''; }
-  .chapter-btn[data-progress="0.65"]::after { content: ''; }
-  .chapter-btn[data-progress="1.0"]::after { content: ''; }
-}
-
 @media (hover: none) and (pointer: coarse) {
   .scroll-mouse {
     display: none;
@@ -2510,4 +2119,404 @@ body.ui-hidden .zen-restore-btn {
 
 .lil-gui button:hover {
   background: var(--pink-hover) !important;
+}
+
+/* ==========================================================================
+   Master Responsive & Mobile Adaptations (Bottom cascade priority)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .text-full {
+    display: none !important;
+  }
+  .text-short {
+    display: inline !important;
+  }
+
+  /* 1. HUD: hidden on mobile by default */
+  .perf-hud {
+    display: none !important;
+  }
+  .perf-hud.debug-visible {
+    display: flex !important;
+    top: calc(96px + var(--sat)) !important;
+    left: calc(8px + var(--sal)) !important;
+    min-width: unset !important;
+    z-index: 55 !important;
+  }
+
+  /* 2. Top Hub Header: Beautiful Compact Card that never clips */
+  .hub-header {
+    position: fixed !important;
+    top: calc(8px + var(--sat)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100vw - 16px - var(--sal) - var(--sar)) !important;
+    max-width: 440px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 8px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1.5px solid var(--pink-border) !important;
+    box-shadow: 0 4px 18px rgba(230, 77, 120, 0.15) !important;
+    overflow: visible !important;
+    z-index: 60 !important;
+  }
+
+  .hub-days-pill,
+  .hub-petal-badge,
+  .hub-music-btn,
+  .hub-cake-btn,
+  .hub-game-btn,
+  .hub-letter-btn {
+    padding: 6px 10px !important;
+    font-size: 0.72rem !important;
+    min-height: 34px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    touch-action: manipulation !important;
+    white-space: nowrap !important;
+  }
+
+  /* Cake & Letter action buttons styling on mobile */
+  .hub-cake-btn {
+    background: var(--pink-primary) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(255, 77, 136, 0.35) !important;
+  }
+  .hub-cake-btn:hover {
+    background: var(--pink-hover) !important;
+  }
+
+  .hub-letter-btn {
+    background: #ffffff !important;
+    border: 1.5px solid var(--pink-primary) !important;
+    color: var(--pink-deep) !important;
+    font-weight: 700 !important;
+  }
+
+  /* 3. Floating Overlay Controls */
+  .overlay-controls {
+    position: fixed !important;
+    top: calc(96px + var(--sat)) !important;
+    right: calc(10px + var(--sar)) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    z-index: 55 !important;
+  }
+  .overlay-controls .mobile-hide {
+    display: none !important;
+  }
+  .ctrl-btn,
+  .fx-toggle-btn {
+    padding: 4px 9px !important;
+    font-size: 0.68rem !important;
+    min-height: 28px !important;
+    gap: 4px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    touch-action: manipulation !important;
+  }
+
+  /* 4. Mini Timeline Dock (Fixed bottom right above dock, never in middle of screen) */
+  .mini-timeline {
+    position: fixed !important;
+    top: auto !important;
+    bottom: calc(66px + var(--sab)) !important;
+    right: calc(10px + var(--sar)) !important;
+    transform: none !important;
+    max-width: calc(100vw - 20px) !important;
+    z-index: 50 !important;
+    background: #ffffff !important;
+    border: 1.5px solid var(--pink-border) !important;
+    box-shadow: 0 4px 14px rgba(230, 77, 120, 0.15) !important;
+  }
+  .mini-timeline.collapsed {
+    width: auto !important;
+    padding: 6px 12px !important;
+    border-radius: 999px !important;
+  }
+  .mini-timeline.collapsed .timeline-body {
+    display: none !important;
+  }
+  .mini-timeline:not(.collapsed) {
+    max-height: 48vh !important;
+    width: min(280px, calc(100vw - 24px)) !important;
+    border-radius: 16px !important;
+  }
+
+  /* 5. Scroll / Swipe Prompt */
+  .scroll-prompt {
+    position: fixed !important;
+    bottom: calc(68px + var(--sab)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid var(--pink-border) !important;
+    border-radius: 999px !important;
+    padding: 4px 14px !important;
+    box-shadow: 0 2px 10px rgba(230, 77, 120, 0.12) !important;
+    font-size: 0.72rem !important;
+    color: var(--pink-deep) !important;
+    pointer-events: none !important;
+    z-index: 35 !important;
+    white-space: nowrap !important;
+  }
+  .scroll-mouse {
+    display: none !important;
+  }
+
+  /* 6. Bottom Chapter Dock */
+  .chapter-dock {
+    position: fixed !important;
+    bottom: calc(10px + var(--sab)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100vw - 20px - var(--sal) - var(--sar)) !important;
+    max-width: 400px !important;
+    padding: 4px 6px !important;
+    gap: 6px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1.5px solid var(--pink-border) !important;
+    box-shadow: 0 6px 20px rgba(230, 77, 120, 0.16) !important;
+    display: flex !important;
+    z-index: 50 !important;
+  }
+  .chapter-btn {
+    flex: 1 !important;
+    min-height: 44px !important;
+    padding: 6px 12px !important;
+    font-size: 0.76rem !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    white-space: nowrap !important;
+    touch-action: manipulation !important;
+  }
+  .chapter-btn .chapter-num {
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+  }
+  .chapter-btn .chapter-title {
+    display: inline-block !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+  }
+
+  /* 7. Modals & Dialogs (Safe Area & Viewport Bound) */
+  .story-modal-overlay,
+  .letter-modal-overlay,
+  .game-modal-overlay,
+  .easter-modal-overlay,
+  .candle-modal-overlay {
+    padding: calc(10px + var(--sat)) calc(10px + var(--sar)) calc(12px + var(--sab)) calc(10px + var(--sal)) !important;
+  }
+
+  .story-card,
+  .letter-card,
+  .game-card,
+  .easter-card,
+  .candle-blow-card {
+    width: 100% !important;
+    max-width: calc(100vw - 20px) !important;
+    max-height: calc(100dvh - 24px - var(--sat) - var(--sab)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: auto !important;
+  }
+
+  .story-close-btn,
+  .letter-close-btn,
+  .game-close-btn,
+  .easter-close-btn,
+  .candle-close-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    font-size: 1.4rem !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Toast notification */
+  .garden-toast {
+    top: calc(96px + var(--sat)) !important;
+    max-width: calc(100vw - 32px) !important;
+    font-size: 0.8rem !important;
+    padding: 8px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hub-header {
+    gap: 5px !important;
+    padding: 5px 6px !important;
+  }
+  .hub-days-pill,
+  .hub-petal-badge,
+  .hub-music-btn,
+  .hub-cake-btn,
+  .hub-game-btn,
+  .hub-letter-btn {
+    padding: 5px 8px !important;
+    font-size: 0.7rem !important;
+    min-height: 32px !important;
+  }
+
+  .chapter-dock {
+    max-width: 360px !important;
+    gap: 4px !important;
+    padding: 4px !important;
+  }
+  .chapter-btn {
+    padding: 6px 8px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Candle Modal Mobile Refinement */
+  .candle-blow-card {
+    padding: 18px 14px !important;
+    border-radius: 18px !important;
+    gap: 10px !important;
+  }
+  .candle-title {
+    font-size: 1.15rem !important;
+  }
+  .candle-instruction {
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+  }
+  .candle-sens-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .candle-sens-btns {
+    width: 100% !important;
+    display: flex !important;
+    gap: 4px !important;
+  }
+  .candle-sens-pill {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 6px 3px !important;
+    font-size: 0.68rem !important;
+    white-space: nowrap !important;
+    touch-action: manipulation !important;
+  }
+  .candle-actions {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  .candle-action-btn {
+    width: 100% !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    padding: 10px 14px !important;
+    font-size: 0.82rem !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Story Card mobile refinement */
+  .story-card {
+    padding: 18px 14px !important;
+    border-radius: 16px !important;
+  }
+  .story-title {
+    font-size: 1.15rem !important;
+  }
+  .story-polaroid-frame {
+    padding: 10px 10px 12px 10px !important;
+  }
+  .story-img-container {
+    aspect-ratio: 4 / 3 !important;
+    max-height: 190px !important;
+  }
+  .story-full-text {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
+  .story-footer {
+    gap: 6px !important;
+  }
+  .story-nav-btn,
+  .story-action-btn {
+    min-height: 44px !important;
+    font-size: 0.74rem !important;
+    padding: 8px 10px !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Letter Card mobile typography */
+  .letter-card {
+    padding: 22px 16px 16px 16px !important;
+    border-radius: 16px !important;
+    border-width: 2px !important;
+  }
+  .letter-title {
+    font-size: 1.15rem !important;
+    line-height: 1.35 !important;
+  }
+  .letter-paper {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    gap: 12px !important;
+  }
+  .letter-paragraph {
+    text-indent: 1em !important;
+    text-align: left !important;
+  }
+  .letter-footer {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .letter-action-btn {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 0.82rem !important;
+    padding: 10px 14px !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Petal Catch Game mobile card */
+  .game-card {
+    padding: 14px 12px !important;
+    border-radius: 16px !important;
+    gap: 10px !important;
+  }
+  .game-title {
+    font-size: 1.05rem !important;
+  }
+  .game-canvas-wrapper {
+    aspect-ratio: 360 / 420 !important;
+    max-height: min(380px, calc(100dvh - 210px)) !important;
+  }
+  .touch-ctrl-btn {
+    min-height: 46px !important;
+    font-size: 0.82rem !important;
+    padding: 10px 8px !important;
+    touch-action: manipulation !important;
+  }
 }
