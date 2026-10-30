@@ -150,6 +150,14 @@ export class SceneOverlay extends EventEmitter {
     this.easterPill = document.getElementById('hub-easter-pill');
 
     this.bindEvents();
+
+    // Sync initial FX button state (Direct WebGL / FX: OFF on mobile for 60 FPS)
+    if (this.postProcessing) {
+      this.updateFXButton(this.postProcessing.isEnabled);
+      this.postProcessing.on('change', (enabled) => {
+        this.updateFXButton(enabled);
+      });
+    }
   }
 
   bindEvents() {

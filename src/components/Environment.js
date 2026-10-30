@@ -19,8 +19,9 @@ export class Environment {
     this.sunLight.castShadow = true;
 
     // Optimized shadow frustum for the sakura tree and Japanese garden (threejs-lighting)
-    this.sunLight.shadow.mapSize.width = 2048;
-    this.sunLight.shadow.mapSize.height = 2048;
+    const isMobile = this.sceneManager?.sizes?.isMobile || false;
+    this.sunLight.shadow.mapSize.width = isMobile ? 1024 : 2048;
+    this.sunLight.shadow.mapSize.height = isMobile ? 1024 : 2048;
     this.sunLight.shadow.camera.near = 1.0;
     this.sunLight.shadow.camera.far = 32;
     this.sunLight.shadow.camera.top = 8.5;
@@ -28,7 +29,7 @@ export class Environment {
     this.sunLight.shadow.camera.bottom = -8.5;
     this.sunLight.shadow.camera.left = -8.5;
     this.sunLight.shadow.bias = -0.0004;
-    this.sunLight.shadow.radius = 2.0;
+    this.sunLight.shadow.radius = isMobile ? 1.0 : 2.0;
 
     this.scene.add(this.sunLight);
 
