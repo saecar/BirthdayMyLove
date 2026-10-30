@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday My Love! 💖</title>
+  <!-- Google Fonts: 8-Bit Retro Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RETRO 8-BIT / 16-BIT RETRO STYLES
+       ========================================================================== */
+    :root {
+      --bg-dark: #0e091b;
+      --bg-card: #1b1233;
+      --border-purple: #422d6e;
+      --pink-main: #ff4d88;
+      --pink-light: #ff75a0;
+      --pink-glow: #ff2a70;
+      --yellow-main: #ffe043;
+      --yellow-light: #fff275;
+      --cyan-main: #4ef2d2;
+      --white-pixel: #fff8f0;
+      --shadow-pixel: #08040f;
+    }
+
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+      margin: 0;
+      padding: 0;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    body {
+      background-color: #06030b;
+      background-image: 
+        radial-gradient(circle at 50% 20%, #21133f 0%, #08040f 80%);
+      font-family: 'Press Start 2P', monospace, sans-serif;
+      color: var(--white-pixel);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    /* Ambient CRT Scanline effect (subtle retro feel) */
+    body::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      z-index: 999;
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    /* Game Boy / Mobile Arcade Container */
+    #arcade-container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      border-left: 4px solid var(--border-purple);
+      border-right: 4px solid var(--border-purple);
+      box-shadow: 0 0 35px rgba(255, 77, 136, 0.2), 0 0 10px rgba(78, 242, 210, 0.15);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @media (min-width: 520px) {
+      #arcade-container {
+        min-height: 94vh;
+        height: 860px;
+        border: 4px solid var(--border-purple);
+        border-radius: 16px;
+        margin: 20px auto;
+      }
+    }
+
+    /* Top Utility Bar */
+    #top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: #150d28;
+      border-bottom: 3px solid var(--border-purple);
+      z-index: 10;
+      font-size: 9px;
+    }
+
+    .top-badge {
+      color: var(--yellow-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-shadow: 1px 1px #000;
+    }
+
+    .audio-btn {
+      background: #251644;
+      border: 2px solid var(--pink-main);
+      color: var(--white-pixel);
+      font-family: inherit;
+      font-size: 9px;
+      padding: 6px 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--shadow-pixel);
+      transition: transform 0.1s;
+    }
+    .audio-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0;
+    }
+
+    /* Screens Viewport */
+    .screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      position: relative;
+      padding: 16px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screen.active {
+      display: flex;
+    }
+
+    /* RETRO BUTTONS */
+    .pixel-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      padding: 14px 18px;
+      color: #fff;
+      background: var(--pink-main);
+      border: 3px solid #ffffff;
+      outline: none;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #9e144a, 0 7px 0 var(--shadow-pixel);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.4;
+      transition: all 0.08s ease;
+      position: relative;
+      letter-spacing: 0.5px;
+    }
+    .pixel-btn:hover {
+      background: var(--pink-light);
+      filter: brightness(1.1);
+    }
+    .pixel-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #9e144a, 0 2px 0 var(--shadow-pixel);
+    }
+    .pixel-btn.yellow {
+      background: var(--yellow-main);
+      color: #3b2a00;
+      border-color: #fff;
+      box-shadow: 0 5px 0 #9c8200, 0 7px 0 var(--shadow-pixel);
+    }
+    .pixel-btn.yellow:hover {
+      background: var(--yellow-light);
+    }
+    .pixel-btn.cyan {
+      background: var(--cyan-main);
+      color: #04362b;
+      box-shadow: 0 5px 0 #1b8770, 0 7px 0 var(--shadow-pixel);
+    }
+
+    /* Floating / Pulsing animation */
+    @keyframes pixel-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .bounce {
+      animation: pixel-bounce 1.6s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .blink {
+      animation: blink 0.9s infinite;
+    }
+
+    /* ==========================================================================
+       SCREEN 0: TITLE SCREEN
+       ========================================================================== */
+    #screen-title {
+      align-items: center;
+      justify-content: space-around;
+      text-align: center;
+      padding: 24px 16px;
+    }
+    .title-box {
+      margin-top: 10px;
+    }
+    .game-logo {
+      font-size: 15px;
+      color: var(--pink-main);
+      text-shadow: 3px 3px 0 var(--shadow-pixel), -2px -2px 0 #ff8bb0;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .game-sub {
+      font-size: 9px;
+      color: var(--yellow-main);
+      line-height: 1.8;
+      letter-spacing: 1px;
+    }
+    #title-canvas {
+      background: transparent;
+      margin: 15px 0;
+    }
+    .quest-card {
+      background: #18102d;
+      border: 3px dashed var(--pink-main);
+      padding: 14px 12px;
+      font-size: 8px;
+      line-height: 1.8;
+      color: var(--white-pixel);
+      margin-bottom: 20px;
+      border-radius: 4px;
+      max-width: 90%;
+    }
+    .quest-card span {
+      color: var(--yellow-main);
+    }
+
+    /* ==========================================================================
+       SCREEN 1: LEVEL 1 (CATCH THE LOVE)
+       ========================================================================== */
+    #level1-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: #170d2d;
+      border: 2px solid var(--border-purple);
+      font-size: 9px;
+      margin-bottom: 8px;
+    }
+    .hud-lives {
+      color: var(--pink-main);
+      letter-spacing: 2px;
+    }
+    .hud-score {
+      color: var(--yellow-main);
+    }
+    #game1-canvas {
+      background: #120924;
+      border: 3px solid var(--pink-main);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+      width: 100%;
+      height: 380px;
+      display: block;
+      touch-action: none;
+      border-radius: 4px;
+    }
+    /* Mobile Touch Control Bar */
+    .touch-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .touch-btn {
+      flex: 1;
+      height: 52px;
+      background: #251642;
+      border: 3px solid var(--border-purple);
+      color: var(--yellow-main);
+      font-size: 18px;
+      font-family: inherit;
+      box-shadow: 0 4px 0 var(--shadow-pixel);
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .touch-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--shadow-pixel);
+      background: var(--pink-main);
+      color: #fff;
+    }
+    .control-tip {
+      font-size: 7.5px;
+      color: #a491c7;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       SCREEN 2: LEVEL 2 (MEMORY MATCH)
+       ========================================================================== */
+    #screen-level2 {
+      align-items: center;
+    }
+    .level-header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .level-title {
+      font-size: 11px;
+      color: var(--yellow-main);
+      margin-bottom: 6px;
+    }
+    .level-desc {
+      font-size: 7.5px;
+      color: #bda8e3;
+      line-height: 1.6;
+    }
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      width: 100%;
+      max-width: 360px;
+      margin: 10px auto;
+    }
+    .card {
+      aspect-ratio: 1 / 1.15;
+      background: #21133f;
+      border: 3px solid #5a3c94;
+      box-shadow: 0 4px 0 var(--shadow-pixel);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .card:hover {
+      border-color: var(--pink-main);
+    }
+    .card.flipped, .card.matched {
+      background: #331d5e;
+      border-color: var(--yellow-main);
+      box-shadow: 0 2px 0 var(--shadow-pixel);
+    }
+    .card.matched {
+      border-color: var(--cyan-main);
+      animation: pulse-matched 0.5s ease;
+    }
+    @keyframes pulse-matched {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .card-canvas {
+      display: none;
+      width: 44px;
+      height: 44px;
+    }
+    .card.flipped .card-canvas, .card.matched .card-canvas {
+      display: block;
+    }
+    .card-back-icon {
+      font-size: 14px;
+      color: var(--pink-main);
+    }
+    .card.flipped .card-back-icon, .card.matched .card-back-icon {
+      display: none;
+    }
+
+    /* ==========================================================================
+       SCREEN 3: LEVEL 3 (MEMORY GALLERY)
+       ========================================================================== */
+    #screen-level3 {
+      align-items: center;
+    }
+    .polaroid-wrapper {
+      background: #fdfaf2;
+      border: 4px solid #fff;
+      padding: 12px 12px 20px 12px;
+      box-shadow: 0 8px 0 var(--shadow-pixel), 0 15px 25px rgba(0,0,0,0.5);
+      border-radius: 3px;
+      width: 100%;
+      max-width: 330px;
+      margin: 10px auto 14px auto;
+      transform: rotate(-1.5deg);
+      transition: transform 0.3s ease;
+    }
+    .polaroid-wrapper:hover {
+      transform: rotate(0deg) scale(1.01);
+    }
+    .polaroid-photo-frame {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #190f30;
+      border: 3px solid #100820;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .polaroid-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .polaroid-canvas-placeholder {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .polaroid-caption {
+      margin-top: 14px;
+      font-size: 8px;
+      color: #241639;
+      line-height: 1.8;
+      text-align: center;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Press Start 2P', monospace;
+    }
+    .polaroid-counter {
+      text-align: center;
+      font-size: 8px;
+      color: var(--yellow-main);
+      margin-bottom: 10px;
+    }
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 330px;
+      margin-bottom: 12px;
+    }
+
+    /* ==========================================================================
+       BONUS SURPRISE: KUPON CINTA
+       ========================================================================== */
+    .coupons-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 100%;
+      max-width: 360px;
+      margin: 10px auto;
+    }
+    .coupon-card {
+      background: #1d1238;
+      border: 2px dashed var(--cyan-main);
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .coupon-card:hover {
+      background: #27194d;
+    }
+    .coupon-info {
+      text-align: left;
+    }
+    .coupon-title {
+      font-size: 9px;
+      color: var(--yellow-main);
+      margin-bottom: 4px;
+    }
+    .coupon-desc {
+      font-size: 7px;
+      color: #a496c5;
+      line-height: 1.4;
+    }
+    .coupon-stamp {
+      font-size: 8px;
+      border: 2px solid var(--pink-main);
+      color: var(--pink-main);
+      padding: 4px 6px;
+      border-radius: 4px;
+      transform: rotate(-10deg);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .coupon-card.redeemed .coupon-stamp {
+      border-color: var(--cyan-main);
+      color: var(--cyan-main);
+      background: rgba(78, 242, 210, 0.1);
+      transform: rotate(5deg);
+    }
+
+    /* ==========================================================================
+       SCREEN 4: LEVEL 4 (ROMANTIC FINALE)
+       ========================================================================== */
+    #screen-level4 {
+      align-items: center;
+      padding: 12px 14px;
+    }
+    #finale-canvas {
+      width: 100%;
+      height: 300px;
+      background: #090514;
+      border: 3px solid var(--pink-main);
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.9);
+      border-radius: 4px;
+      display: block;
+    }
+    .cake-action-area {
+      margin: 12px 0;
+      text-align: center;
+      width: 100%;
+    }
+    .finale-instruction {
+      font-size: 8px;
+      color: var(--yellow-main);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    /* Heartfelt Letter Box with Typewriter Effect */
+    .letter-box {
+      display: none;
+      background: #190f30;
+      border: 3px solid var(--yellow-main);
+      box-shadow: 0 6px 0 var(--shadow-pixel);
+      padding: 16px 14px;
+      margin-top: 14px;
+      width: 100%;
+      border-radius: 6px;
+      text-align: left;
+    }
+    .letter-title {
+      font-size: 10px;
+      color: var(--pink-main);
+      margin-bottom: 12px;
+      text-align: center;
+      border-bottom: 2px dashed #422d6e;
+      padding-bottom: 8px;
+    }
+    .letter-content {
+      font-size: 8px;
+      line-height: 2.1;
+      color: var(--white-pixel);
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+    .letter-signature {
+      margin-top: 14px;
+      text-align: right;
+      font-size: 8px;
+      color: var(--yellow-main);
+    }
+
+    /* ==========================================================================
+       LEVEL CLEAR MODAL / OVERLAY
+       ========================================================================== */
+    #transition-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 6, 20, 0.94);
+      z-index: 100;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+    #transition-overlay.show {
+      display: flex;
+    }
+    .modal-banner {
+      font-size: 14px;
+      color: var(--yellow-main);
+      text-shadow: 2px 2px 0 #000;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .modal-msg {
+      font-size: 8px;
+      color: var(--white-pixel);
+      line-height: 2;
+      margin-bottom: 24px;
+      max-width: 80%;
+    }
+    #modal-canvas {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+    }
+
+    /* Custom Scrollbar for Retro Feel */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #110924;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--pink-main);
+      border-radius: 0px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN RETRO GAME CONTAINER -->
+  <div id="arcade-container">
+
+    <!-- TOP RETRO BAR (Sound, Level Info) -->
+    <div id="top-bar">
+      <div class="top-badge">
+        <span id="header-level-badge">LEVEL 0/4</span>
+      </div>
+      <button class="audio-btn" id="audio-toggle-btn">🔊 BGM: ON</button>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 0: TITLE SCREEN
+         ==================================================================== -->
+    <div class="screen active" id="screen-title">
+      <div class="title-box">
+        <div class="game-logo bounce">♥ LOVE QUEST ♥</div>
+        <div class="game-sub" id="title-girlfriend-name">EDISI ULANG TAHUN</div>
+      </div>
+
+      <!-- Animated Title Canvas (Pixel Couple + Sparkling Stars) -->
+      <canvas id="title-canvas" width="220" height="150"></canvas>
+
+      <div class="quest-card">
+        MISI SPESIAL HARI INI:<br>
+        Selesaikan 4 level rahasia untuk membuka hadiah & surat cinta paling tulus dari <span id="title-sender-name">Seseorang</span>! 💖✨
+      </div>
+
+      <button class="pixel-btn yellow blink" id="btn-start-game" style="width: 85%;">
+        ▶ MULAI PETUALANGAN
+      </button>
+
+      <div style="font-size: 7px; color: #6b5791; margin-top: 10px;">
+        Sentuh tombol atau layar untuk memulai suara
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 1: LEVEL 1 (TANGKAP HATI & KUE)
+         ==================================================================== -->
+    <div class="screen" id="screen-level1">
+      <div id="level1-hud">
+        <div class="hud-lives" id="hud-lives">♥♥♥</div>
+        <div class="hud-score" id="hud-score">SKOR: 0 / 15</div>
+      </div>
+
+      <!-- Canvas for Catching Game -->
+      <canvas id="game1-canvas" width="360" height="400"></canvas>
+
+      <!-- On-Screen Controls for Mobile Phones -->
+      <div class="touch-controls">
+        <button class="touch-btn" id="btn-left">◀ KIRI</button>
+        <button class="touch-btn" id="btn-right">KANAN ▶</button>
+      </div>
+      <div class="control-tip">
+        Tips: Geser layar / pakai tombol panah / keyboard (A & D).<br>
+        Tangkap Hati (+1) & Kue (+3). Hindari Hati Retak! 💔
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 2: LEVEL 2 (MEMORY MATCH - KARTU PIXEL)
+         ==================================================================== -->
+    <div class="screen" id="screen-level2">
+      <div class="level-header">
+        <div class="level-title">LEVEL 2: KAPSUL MEMORI</div>
+        <div class="level-desc">Cocokkan 6 pasang simbol cinta kita! 💕</div>
+      </div>
+
+      <div class="memory-grid" id="memory-grid">
+        <!-- 12 Cards injected by JS -->
+      </div>
+
+      <div style="text-align: center; font-size: 7.5px; color: #a491c7; margin-top: 8px;">
+        Percobaan: <span id="memory-moves" style="color:var(--yellow-main)">0</span> | 
+        Pasangan: <span id="memory-matches" style="color:var(--cyan-main)">0/6</span>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 3: LEVEL 3 (GALERI POLAROID & KUPON CINTA)
+         ==================================================================== -->
+    <div class="screen" id="screen-level3">
+      <div class="level-header">
+        <div class="level-title">LEVEL 3: JALAN KENANGAN</div>
+        <div class="level-desc">Setiap detik bersamamu adalah favoritku 📸</div>
+      </div>
+
+      <!-- Polaroid Memory Frame -->
+      <div class="polaroid-wrapper">
+        <div class="polaroid-photo-frame">
+          <img class="polaroid-img" id="polaroid-img" src="" alt="Memory">
+          <canvas class="polaroid-canvas-placeholder" id="polaroid-placeholder-canvas" width="280" height="280"></canvas>
+        </div>
+        <div class="polaroid-caption" id="polaroid-caption">
+          Memuat kenangan indah kita...
+        </div>
+      </div>
+
+      <div class="polaroid-counter" id="polaroid-counter">FOTO 1 DARI 4</div>
+
+      <div class="gallery-nav">
+        <button class="pixel-btn" id="btn-prev-photo" style="font-size: 9px; padding: 10px 14px;">◀ SEBELUM</button>
+        <button class="pixel-btn" id="btn-next-photo" style="font-size: 9px; padding: 10px 14px;">LANJUT ▶</button>
+      </div>
+
+      <!-- Bonus: Sweet Love Coupons -->
+      <div style="font-size: 8.5px; color: var(--yellow-main); text-align: center; margin: 16px 0 6px 0;">
+        🎁 KUPON CINTA ULANG TAHUN 🎁
+      </div>
+      <div style="font-size: 7px; color: #9c8abb; text-align: center; margin-bottom: 8px;">
+        (Ketuk kupon untuk mencap & mengklaim hak istimewamu!)
+      </div>
+
+      <div class="coupons-container" id="coupons-list">
+        <!-- Injected from CONFIG -->
+      </div>
+
+      <div style="text-align: center; margin-top: 14px; margin-bottom: 10px;">
+        <button class="pixel-btn yellow" id="btn-to-finale" style="width: 100%; font-size: 9px;">
+          MENUJU KEJUTAN TERAKHIR! 🎂✨
+        </button>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SCREEN 4: LEVEL 4 (GRAND FINALE - TIUP LILIN & FIREWORKS)
+         ==================================================================== -->
+    <div class="screen" id="screen-level4">
+      <div class="level-header">
+        <div class="level-title">FINAL: HARAPAN & CINTA</div>
+        <div class="level-desc">Kue spesial untuk orang paling istimewa 🎂</div>
+      </div>
+
+      <!-- Finale Canvas (Cake, Candles, Fireworks & Walking Couple) -->
+      <canvas id="finale-canvas" width="360" height="300"></canvas>
+
+      <div class="cake-action-area" id="cake-controls">
+        <div class="finale-instruction">
+          Pejamkan matamu, buat satu permohonan tulus,<br>lalu tiup lilin ulang tahunmu! 🕯️
+        </div>
+        <button class="pixel-btn yellow bounce" id="btn-blow-candle" style="font-size: 11px; padding: 14px 20px;">
+          🎂 TIUP LILIN! 💨
+        </button>
+      </div>
+
+      <!-- Heartfelt Love Letter Box (Typewriter Animated) -->
+      <div class="letter-box" id="letter-box">
+        <div class="letter-title" id="letter-recipient">UNTUK KAMU TERCINTA 💖</div>
+        <div class="letter-content" id="letter-content"></div>
+        <div class="letter-signature" id="letter-author">- Dari Aku Yang Selalu Menyayangimu -</div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="pixel-btn cyan" id="btn-restart-game" style="font-size: 9px;">
+            🔄 PUTAR ULANG CERITA KITA
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         LEVEL TRANSITION MODAL OVERLAY
+         ==================================================================== -->
+    <div id="transition-overlay">
+      <canvas id="modal-canvas" width="48" height="48"></canvas>
+      <div class="modal-banner" id="modal-title">LEVEL CLEAR!</div>
+      <div class="modal-msg" id="modal-desc">Hebat banget sayang!</div>
+      <button class="pixel-btn yellow" id="modal-btn-next">LANJUTKAN ▶</button>
+    </div>
+
+  </div> <!-- End #arcade-container -->
+
+  <!-- ==========================================================================
+       JAVASCRIPT GAME CODE & CONFIGURATION
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. KONFIGURASI PRIBADI (SILAKAN EDIT BAGIAN INI DENGAN MUDAH)
+       ========================================================================== */
+    const CONFIG = {
+      // Nama pacarmu
+      girlfriendName: "Putri",
+
+      // Namamu (pengirim)
+      senderName: "Dill",
+
+      // Target skor untuk Level 1 (Tangkap Hati)
+      level1TargetScore: 15,
+
+      // Foto kenangan kalian beserta caption-nya.
+      // Jika src dibiarkan kosong (""), sistem akan otomatis menggambar
+      // ilustrasi pixel art retro yang manis bertuliskan "TARUH FOTO KAMU DI SINI".
+      // Jika ingin pakai foto asli: masukkan nama file / URL (contoh: "foto1.jpg", "https://...")
+      photos: [
+        {
+          src: "", 
+          cap: "Hari pertama kita jalan bareng. Senyummu langsung bikin duniaku berhenti berputar ✨"
+        },
+        {
+          src: "", 
+          cap: "Waktu kita makan es krim bareng dan kamu comong tapi tetap paling cantik sedunia 🍦"
+        },
+        {
+          src: "", 
+          cap: "Kehujanan bareng di halte tapi kita malah ketawa tanpa henti. Momen favoritku selamanya ☔"
+        },
+        {
+          src: "", 
+          cap: "Terima kasih sudah lahir dan jadi bagian terindah dalam hidupku. Selamat ulang tahun sayang! 🎂💖"
+        }
+      ],
+
+      // Kupon cinta interaktif yang bisa diklaim pacarmu di Level 3
+      coupons: [
+        { title: "KUPON MAKAN BEBAS PILIH", desc: "Berlaku untuk makan apapun yang kamu inginkan, aku yang traktir!" },
+        { title: "KUPON PIJAT SEPUASNYA", desc: "Bebas minta pijat bahu / punggung kalau kamu capek seharian." },
+        { title: "KUPON BEBAS NGAMBEK 1 HARI", desc: "Kalau kamu ngambek, aku wajib minta maaf duluan tanpa alasan!" },
+        { title: "KUPON PELUK & CIUM UNLIMITED", desc: "Bisa diklaim kapan saja dan tidak akan pernah kadaluarsa." }
+      ],
+
+      // Surat cinta / ucapan ulang tahun di Finale (Level 4)
+      birthdayMessage: 
+        "Selamat ulang tahun yang paling indah untuk bidadari kecilku tercinta!\n\n" +
+        "Terima kasih sudah hadir di hidupku dan membawa begitu banyak warna, tawa, dan rasa hangat yang nggak pernah kurasakan sebelumnya. " +
+        "Melihat senyummu selalu jadi bagian terbaik dari setiap hariku.\n\n" +
+        "Di usiamu yang baru ini, aku berdoa agar kamu selalu diberi kesehatan, kebahagiaan tanpa akhir, ketenangan hati, dan semua impian besarmu tercapai satu per satu. Jangan pernah ragu pada dirimu sendiri, karena kamu sekuat dan seindah itu.\n\n" +
+        "Apapun yang terjadi di depan nanti, ingat ya: aku akan selalu ada di sampingmu untuk menggenggam tanganmu dan mendukungmu.\n\n" +
+        "I love you more than words, stars, and pixels can ever describe! Happy Birthday My Love! ❤️🎉🎂✨"
+    };
+
+    /* ==========================================================================
+       2. PIXEL ART MATRICES (Dibuat lewat kode murni tanpa file eksternal)
+       ========================================================================== */
+    // Helper Warna Palet
+    const PALETTE = {
+      '.': null,              // transparan
+      'R': '#ff2a5f',         // Merah Hati
+      'D': '#b80c38',         // Merah Gelap
+      'P': '#ff79b0',         // Pink Muda
+      'W': '#ffffff',         // Putih
+      'B': '#1a103c',         // Navy gelap / outline
+      'Y': '#ffd13b',         // Kuning emas
+      'O': '#ff8a14',         // Oranye lilin
+      'G': '#4ef2d2',         // Mint / Cyan
+      'K': '#4a2f13',         // Rambut Cokelat
+      'S': '#ffd8b3',         // Kulit Cerah
+      'C': '#ff4d88',         // Gaun Pink
+      'J': '#3d6cb9',         // Jas Biru Cowo
+      'L': '#784421',         // Cokelat Kue
+      'F': '#ffb0d0',         // Krim Stroberi
+      'X': '#736b85',         // Abu-abu Hati Rusak
+      'M': '#362b48'          // Abu Gelap Hati Rusak
+    };
+
+    // Sprite 12x12: Hati Merah Bersinar
+    const SPRITE_HEART = [
+      "..RR..RR..",
+      ".RPPRRPPR.",
+      "RPPWRRPPRR",
+      "RRRRRRRRRR",
+      "RRRRRRRRRR",
+      ".RRRRRRRR.",
+      "..RRRRRR..",
+      "...RRRR...",
+      "....RR...."
+    ];
+
+    // Sprite 10x10: Hati Retak / Rusak (Rintangan)
+    const SPRITE_BROKEN_HEART = [
+      ".XX..XX.",
+      "XMX.XMMX",
+      "X.X.X..X",
+      "XX.X.XXX",
+      ".X.X..X.",
+      "..X.X...",
+      "...X...."
+    ];
+
+    // Sprite 12x12: Kue Ulang Tahun Kecil
+    const SPRITE_CAKE_ITEM = [
+      "....WW....",
+      "....YY....",
+      "....OO....",
+      "..FFFFFF..",
+      ".FFFFFFFF.",
+      ".LLLLLLLL.",
+      "FFFFFFFFFF",
+      "LLLLLLLLLL",
+      "WWWWWWWWWW"
+    ];
+
+    // Sprite 10x10: Bintang Emas
+    const SPRITE_STAR = [
+      "....YY....",
+      "....YY....",
+      "YY..YY..YY",
+      ".YYYYYYYY.",
+      "..YYYYYY..",
+      ".YYYYYYYY.",
+      "YY..YY..YY",
+      "....YY....",
+      "....YY...."
+    ];
+
+    // Sprite 10x10: Kado Pita
+    const SPRITE_GIFT = [
+      "...YYYY...",
+      "..YYWWYY..",
+      ".RRRRRRRR.",
+      ".RRYYRRYR.",
+      ".RRYYRRYR.",
+      ".RRRRRRRR.",
+      ".RRYYRRYR.",
+      ".RRYYRRYR."
+    ];
+
+    // Sprite 10x10: Bunga Mekar
+    const SPRITE_FLOWER = [
+      "...PP...",
+      "..PPPP..",
+      "PPPPPPPP",
+      "PPPYYPPP",
+      "PPPYYPPP",
+      "PPPPPPPP",
+      "..PPPP..",
+      "...GG...",
+      "...GG..."
+    ];
+
+    // Sprite 10x10: Bulan Sabit
+    const SPRITE_MOON = [
+      "...YYYY...",
+      "..YYYYY...",
+      ".YYYYY....",
+      ".YYYY.....",
+      ".YYYY.....",
+      ".YYYYY....",
+      "..YYYYY...",
+      "...YYYY..."
+    ];
+
+    // Sprite Karakter Cewek (Tampak Depan / Jalan) 14x16
+    const SPRITE_GIRL_FRAME1 = [
+      "....KKKKKK....",
+      "...KKKKKKKK...",
+      "..KKKSSSSKKK..",
+      "..KKSSSSSSKK..",
+      "..KKBSBBSBKK..",
+      "..KKSSSSSSKK..",
+      "...KSSSSSKK...",
+      "....SPPPSK....",
+      "...CCCCCCC....",
+      "..CCCCCCCC....",
+      "..CCCCCCCCC...",
+      "..CCCCCCCC....",
+      "...CCCCCCC....",
+      "....SSSS......",
+      "....SSSS......",
+      "...BB..BB....."
+    ];
+    const SPRITE_GIRL_FRAME2 = [
+      "....KKKKKK....",
+      "...KKKKKKKK...",
+      "..KKKSSSSKKK..",
+      "..KKSSSSSSKK..",
+      "..KKBSBBSBKK..",
+      "..KKSSSSSSKK..",
+      "...KSSSSSKK...",
+      "....SPPPSK....",
+      "...CCCCCCC....",
+      "..CCCCCCCC....",
+      "..CCCCCCCCC...",
+      "..CCCCCCCC....",
+      "...CCCCCCC....",
+      ".....SSSS.....",
+      ".....SSSS.....",
+      "....BB..BB...."
+    ];
+
+    // Sprite Karakter Cowok (Untuk Finale) 14x16
+    const SPRITE_BOY_FRAME1 = [
+      "....BBBBBB....",
+      "...BBBBBBBB...",
+      "..BBBSSSSBBB..",
+      "..BBSSSSSSBB..",
+      "..BBBSBBSBBB..",
+      "..BBSSSSSSBB..",
+      "...BSSSSSB....",
+      "....SSSSS.....",
+      "...JJJJJJJ....",
+      "..JJJJJJJJ....",
+      "..JJJJJJJJJ...",
+      "..JJJJJJJJ....",
+      "...JJJJJJJ....",
+      "....BBBB......",
+      "....BBBB......",
+      "...BB..BB....."
+    ];
+    const SPRITE_BOY_FRAME2 = [
+      "....BBBBBB....",
+      "...BBBBBBBB...",
+      "..BBBSSSSBBB..",
+      "..BBSSSSSSBB..",
+      "..BBBSBBSBBB..",
+      "..BBSSSSSSBB..",
+      "...BSSSSSB....",
+      "....SSSSS.....",
+      "...JJJJJJJ....",
+      "..JJJJJJJJ....",
+      "..JJJJJJJJJ...",
+      "..JJJJJJJJ....",
+      "...JJJJJJJ....",
+      ".....BBBB.....",
+      ".....BBBB.....",
+      "....BB..BB...."
+    ];
+
+    // Fungsi Penggambar Matriks Pixel ke Canvas Context
+    function drawPixelSprite(ctx, matrix, x, y, pixelSize = 3, flipH = false) {
+      const height = matrix.length;
+      const width = matrix[0].length;
+      ctx.save();
+      if (flipH) {
+        ctx.translate(x + width * pixelSize, y);
+        ctx.scale(-1, 1);
+        x = 0;
+        y = 0;
+      }
+      for (let r = 0; r < height; r++) {
+        for (let c = 0; c < width; c++) {
+          const char = matrix[r][c];
+          if (char && PALETTE[char]) {
+            ctx.fillStyle = PALETTE[char];
+            ctx.fillRect(x + c * pixelSize, y + r * pixelSize, pixelSize, pixelSize);
+          }
+        }
+      }
+      ctx.restore();
+    }
+
+    /* ==========================================================================
+       3. 8-BIT AUDIO SYNTHESIZER (Web Audio API murni)
+       ========================================================================== */
+    class RetroAudio {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+        this.bgmPlaying = false;
+        this.bgmStep = 0;
+        this.bgmTimer = null;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTone(freq, type = 'square', duration = 0.1, gainVal = 0.08) {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {}
+      }
+
+      // Suara Ambil Hati (+1)
+      sfxHeart() {
+        if (!this.enabled) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        [523.25, 659.25, 783.99].forEach((f, idx) => {
+          setTimeout(() => this.playTone(f, 'square', 0.12, 0.06), idx * 60);
+        });
+      }
+
+      // Suara Ambil Kue (+3)
+      sfxCake() {
+        if (!this.enabled) return;
+        this.init();
+        [523.25, 659.25, 783.99, 1046.50].forEach((f, idx) => {
+          setTimeout(() => this.playTone(f, 'triangle', 0.14, 0.09), idx * 70);
+        });
+      }
+
+      // Suara Terkena Hati Retak / Rusak
+      sfxHurt() {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(160, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(50, this.ctx.currentTime + 0.25);
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.25);
+        } catch(e) {}
+      }
+
+      // Suara Balik Kartu
+      sfxCardFlip() {
+        this.playTone(480, 'triangle', 0.05, 0.06);
+      }
+
+      // Suara Kartu Cocok
+      sfxMatch() {
+        [659.25, 880, 1046.5].forEach((f, idx) => {
+          setTimeout(() => this.playTone(f, 'square', 0.12, 0.07), idx * 80);
+        });
+      }
+
+      // Suara Level Clear Fanfare
+      sfxVictory() {
+        const notes = [523.25, 523.25, 523.25, 659.25, 783.99, 1046.5];
+        const times = [0, 110, 220, 330, 480, 700];
+        times.forEach((t, i) => {
+          setTimeout(() => this.playTone(notes[i], 'square', 0.22, 0.08), t);
+        });
+      }
+
+      // Suara Tiup Lilin (Noise Swoosh)
+      sfxBlowCandle() {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const bufferSize = this.ctx.sampleRate * 0.4;
+          const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+          }
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(800, this.ctx.currentTime);
+          filter.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.4);
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.4);
+          noise.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+          noise.start();
+        } catch(e) {}
+      }
+
+      // Suara Kembang Api Meledak
+      sfxFirework() {
+        if (!this.enabled) return;
+        this.init();
+        try {
+          const bufferSize = this.ctx.sampleRate * 0.3;
+          const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            data[i] = (Math.random() * 2 - 1);
+          }
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buffer;
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
+          noise.connect(gain);
+          gain.connect(this.ctx.destination);
+          noise.start();
+        } catch(e) {}
+      }
+
+      // Suara Ketikan Mesin Tik
+      sfxTypewriter() {
+        this.playTone(850 + Math.random() * 200, 'triangle', 0.02, 0.03);
+      }
+
+      // Background Melody Santai Romantis 8-Bit
+      startBGM() {
+        if (this.bgmPlaying || !this.enabled) return;
+        this.init();
+        this.bgmPlaying = true;
+        // Melodi romantis sederhana (C major / A minor arpeggiated loop)
+        const melody = [
+          523.25, 659.25, 783.99, 659.25, // C E G E
+          440.00, 523.25, 659.25, 523.25, // A C E C
+          392.00, 493.88, 587.33, 493.88, // G B D B
+          349.23, 440.00, 523.25, 659.25  // F A C E
+        ];
+        this.bgmStep = 0;
+        const playStep = () => {
+          if (!this.bgmPlaying || !this.enabled) return;
+          const freq = melody[this.bgmStep % melody.length];
+          this.playTone(freq, 'triangle', 0.16, 0.025);
+          this.bgmStep++;
+          this.bgmTimer = setTimeout(playStep, 260);
+        };
+        playStep();
+      }
+
+      stopBGM() {
+        this.bgmPlaying = false;
+        if (this.bgmTimer) clearTimeout(this.bgmTimer);
+      }
+
+      toggleAudio() {
+        this.enabled = !this.enabled;
+        if (!this.enabled) {
+          this.stopBGM();
+        } else {
+          this.startBGM();
+        }
+        return this.enabled;
+      }
+    }
+
+    const audio = new RetroAudio();
+
+    /* ==========================================================================
+       4. INISIALISASI DATA USER KE HALAMAN
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Pasang Nama di UI
+      document.getElementById('title-girlfriend-name').textContent = "UNTUK " + CONFIG.girlfriendName.toUpperCase();
+      document.getElementById('title-sender-name').textContent = CONFIG.senderName;
+      document.getElementById('letter-recipient').textContent = "UNTUK " + CONFIG.girlfriendName.toUpperCase() + " TERCINTA 💖";
+      document.getElementById('letter-author').textContent = "- Dari " + CONFIG.senderName + " yang selalu sayang kamu -";
+
+      // Render Kupon Cinta
+      const couponContainer = document.getElementById('coupons-list');
+      CONFIG.coupons.forEach((c, idx) => {
+        const item = document.createElement('div');
+        item.className = 'coupon-card';
+        item.innerHTML = `
+          <div class="coupon-info">
+            <div class="coupon-title">${c.title}</div>
+            <div class="coupon-desc">${c.desc}</div>
+          </div>
+          <div class="coupon-stamp" id="coupon-stamp-${idx}">KLAIM</div>
+        `;
+        item.addEventListener('click', () => {
+          item.classList.toggle('redeemed');
+          const stamp = document.getElementById(`coupon-stamp-${idx}`);
+          if (item.classList.contains('redeemed')) {
+            stamp.textContent = "TERPAKAI ✓";
+            audio.sfxMatch();
+          } else {
+            stamp.textContent = "KLAIM";
+            audio.sfxCardFlip();
+          }
+        });
+        couponContainer.appendChild(item);
+      });
+
+      // Siapkan Animasi Judul
+      initTitleAnimation();
+
+      // Siapkan Audio Listener pada interaksi pertama
+      const unlockAudio = () => {
+        audio.init();
+        audio.startBGM();
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('touchstart', unlockAudio);
+      };
+      window.addEventListener('click', unlockAudio);
+      window.addEventListener('touchstart', unlockAudio);
+
+      // Tombol Toggle BGM
+      const audioBtn = document.getElementById('audio-toggle-btn');
+      audioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOn = audio.toggleAudio();
+        audioBtn.textContent = isOn ? "🔊 BGM: ON" : "🔇 BGM: OFF";
+      });
+
+      // Tombol Mulai Petualangan
+      document.getElementById('btn-start-game').addEventListener('click', () => {
+        audio.sfxHeart();
+        switchScreen('screen-level1');
+        startLevel1();
+      });
+
+      // Modal Lanjut Tombol
+      document.getElementById('modal-btn-next').addEventListener('click', () => {
+        hideModal();
+        if (currentLevelTargetScreen) {
+          switchScreen(currentLevelTargetScreen);
+          if (currentLevelTargetScreen === 'screen-level2') startLevel2();
+          else if (currentLevelTargetScreen === 'screen-level3') startLevel3();
+          else if (currentLevelTargetScreen === 'screen-level4') startLevel4();
+        }
+      });
+    });
+
+    // Navigasi Antar Screen
+    let currentScreen = 'screen-title';
+    let currentLevelTargetScreen = null;
+
+    function switchScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add('active');
+        currentScreen = screenId;
+      }
+
+      // Update badge header
+      const badge = document.getElementById('header-level-badge');
+      if (screenId === 'screen-title') badge.textContent = "START";
+      else if (screenId === 'screen-level1') badge.textContent = "LEVEL 1/4";
+      else if (screenId === 'screen-level2') badge.textContent = "LEVEL 2/4";
+      else if (screenId === 'screen-level3') badge.textContent = "LEVEL 3/4";
+      else if (screenId === 'screen-level4') badge.textContent = "FINAL 4/4";
+    }
+
+    // Modal Level Transisi
+    function showModal(title, message, nextScreenId, spriteMatrix = SPRITE_HEART) {
+      currentLevelTargetScreen = nextScreenId;
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent = message;
+      
+      const modalCanvas = document.getElementById('modal-canvas');
+      const mctx = modalCanvas.getContext('2d');
+      mctx.clearRect(0, 0, modalCanvas.width, modalCanvas.height);
+      drawPixelSprite(mctx, spriteMatrix, 6, 6, 4);
+
+      document.getElementById('transition-overlay').classList.add('show');
+      audio.sfxVictory();
+    }
+
+    function hideModal() {
+      document.getElementById('transition-overlay').classList.remove('show');
+    }
+
+    /* ==========================================================================
+       5. ANIMASI TITLE SCREEN (Pixel Couple & Bintang Berkelap-kelip)
+       ========================================================================== */
+    function initTitleAnimation() {
+      const canvas = document.getElementById('title-canvas');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      for (let i = 0; i < 20; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * (canvas.height - 40),
+          size: Math.random() > 0.5 ? 2 : 1,
+          blink: Math.random() * 50
+        });
+      }
+
+      let frame = 0;
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Bintang
+        frame++;
+        stars.forEach(st => {
+          st.blink++;
+          if (Math.sin(st.blink * 0.1) > 0) {
+            ctx.fillStyle = "#ffe043";
+            ctx.fillRect(st.x, st.y, st.size, st.size);
+          }
+        });
+
+        // Bulan kecil
+        drawPixelSprite(ctx, SPRITE_MOON, 180, 10, 2.5);
+
+        // Rumput pixel di bawah
+        ctx.fillStyle = "#1e133c";
+        ctx.fillRect(0, 130, canvas.width, 20);
+        ctx.fillStyle = "#2e1d5c";
+        ctx.fillRect(0, 128, canvas.width, 2);
+
+        // Pasangan Bersebelahan
+        const walkFrame = Math.floor(frame / 18) % 2;
+        // Cowok di kiri
+        drawPixelSprite(ctx, walkFrame === 0 ? SPRITE_BOY_FRAME1 : SPRITE_BOY_FRAME2, 70, 78, 3.2);
+        // Cewek di kanan
+        drawPixelSprite(ctx, walkFrame === 0 ? SPRITE_GIRL_FRAME1 : SPRITE_GIRL_FRAME2, 115, 78, 3.2, true);
+
+        // Hati melayang di atas kepala mereka
+        const heartY = 55 + Math.sin(frame * 0.08) * 4;
+        drawPixelSprite(ctx, SPRITE_HEART, 100, heartY, 2.5);
+
+        if (currentScreen === 'screen-title') {
+          requestAnimationFrame(render);
+        }
+      }
+      render();
+    }
+
+    /* ==========================================================================
+       6. LEVEL 1: TANGKAP HATI (Catch The Love)
+       ========================================================================== */
+    let l1State = {
+      score: 0,
+      lives: 3,
+      playerX: 160,
+      playerSpeed: 7,
+      movingLeft: false,
+      movingRight: false,
+      items: [],
+      spawnTimer: 0,
+      animFrame: null,
+      walkAnimTimer: 0,
+      walkFrame: 0,
+      targetScore: CONFIG.level1TargetScore || 15
+    };
+
+    function startLevel1() {
+      const canvas = document.getElementById('game1-canvas');
+      const ctx = canvas.getContext('2d');
+      l1State.score = 0;
+      l1State.lives = 3;
+      l1State.playerX = canvas.width / 2 - 20;
+      l1State.items = [];
+      updateL1Hud();
+
+      // Keyboard Controls
+      window.onkeydown = (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') l1State.movingLeft = true;
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') l1State.movingRight = true;
+      };
+      window.onkeyup = (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') l1State.movingLeft = false;
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') l1State.movingRight = false;
+      };
+
+      // Mobile Touch Controls
+      const btnLeft = document.getElementById('btn-left');
+      const btnRight = document.getElementById('btn-right');
+
+      const addTouch = (elem, onStart, onEnd) => {
+        elem.onpointerdown = (e) => { e.preventDefault(); onStart(); };
+        elem.onpointerup = (e) => { e.preventDefault(); onEnd(); };
+        elem.onpointercancel = (e) => { e.preventDefault(); onEnd(); };
+      };
+      addTouch(btnLeft, () => l1State.movingLeft = true, () => l1State.movingLeft = false);
+      addTouch(btnRight, () => l1State.movingRight = true, () => l1State.movingRight = false);
+
+      // Direct Drag Touch on Canvas
+      let touchActive = false;
+      canvas.onpointerdown = (e) => {
+        touchActive = true;
+        movePlayerToTouch(e);
+      };
+      canvas.onpointermove = (e) => {
+        if (touchActive) movePlayerToTouch(e);
+      };
+      canvas.onpointerup = () => { touchActive = false; };
+      canvas.onpointercancel = () => { touchActive = false; };
+
+      function movePlayerToTouch(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const touchX = (e.clientX - rect.left) * scaleX;
+        l1State.playerX = Math.max(10, Math.min(canvas.width - 50, touchX - 20));
+      }
+
+      // Loop Utama Game 1
+      function update() {
+        if (currentScreen !== 'screen-level1') return;
+
+        // Gerak Player
+        if (l1State.movingLeft) {
+          l1State.playerX -= l1State.playerSpeed;
+          l1State.walkAnimTimer++;
+        }
+        if (l1State.movingRight) {
+          l1State.playerX += l1State.playerSpeed;
+          l1State.walkAnimTimer++;
+        }
+        l1State.playerX = Math.max(10, Math.min(canvas.width - 50, l1State.playerX));
+
+        if (l1State.walkAnimTimer > 8) {
+          l1State.walkFrame = l1State.walkFrame === 0 ? 1 : 0;
+          l1State.walkAnimTimer = 0;
+        }
+
+        // Spawn Items
+        l1State.spawnTimer++;
+        const spawnInterval = Math.max(30, 60 - Math.floor(l1State.score * 1.5));
+        if (l1State.spawnTimer > spawnInterval) {
+          l1State.spawnTimer = 0;
+          const rand = Math.random();
+          let type = 'HEART';
+          if (rand < 0.22) type = 'BROKEN';
+          else if (rand < 0.40) type = 'CAKE';
+
+          l1State.items.push({
+            x: 20 + Math.random() * (canvas.width - 60),
+            y: -30,
+            type: type,
+            speed: 2.8 + Math.random() * 1.5 + (l1State.score * 0.08)
+          });
+        }
+
+        // Clear Background
+        ctx.fillStyle = "#120924";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Grid retro halus di lantai
+        ctx.fillStyle = "#1e113a";
+        ctx.fillRect(0, canvas.height - 35, canvas.width, 35);
+        ctx.fillStyle = "#362164";
+        ctx.fillRect(0, canvas.height - 36, canvas.width, 2);
+
+        // Update & Gambar Items
+        for (let i = l1State.items.length - 1; i >= 0; i--) {
+          const it = l1State.items[i];
+          it.y += it.speed;
+
+          // Gambar item
+          if (it.type === 'HEART') {
+            drawPixelSprite(ctx, SPRITE_HEART, it.x, it.y, 3);
+          } else if (it.type === 'CAKE') {
+            drawPixelSprite(ctx, SPRITE_CAKE_ITEM, it.x, it.y, 3);
+          } else {
+            drawPixelSprite(ctx, SPRITE_BROKEN_HEART, it.x, it.y, 3.5);
+          }
+
+          // Cek Tabrakan dengan Karakter (Hitbox)
+          const playerY = canvas.height - 75;
+          const hit = (
+            it.x + 25 > l1State.playerX &&
+            it.x < l1State.playerX + 40 &&
+            it.y + 25 > playerY &&
+            it.y < playerY + 50
+          );
+
+          if (hit) {
+            if (it.type === 'HEART') {
+              l1State.score += 1;
+              audio.sfxHeart();
+            } else if (it.type === 'CAKE') {
+              l1State.score += 3;
+              audio.sfxCake();
+            } else {
+              l1State.lives -= 1;
+              audio.sfxHurt();
+            }
+            l1State.items.splice(i, 1);
+            updateL1Hud();
+
+            // Cek Menang Level 1
+            if (l1State.score >= l1State.targetScore) {
+              showModal(
+                "LEVEL 1 CLEAR! 💖",
+                `Kamu berhasil mengumpulkan semua rasa sayangku! Skor: ${l1State.score}`,
+                "screen-level2",
+                SPRITE_HEART
+              );
+              return;
+            }
+
+            // Cek Kalah Level 1
+            if (l1State.lives <= 0) {
+              audio.sfxHurt();
+              alert("Yah, nyawamu habis! Jangan sedih, ayo coba lagi sayang! ❤️");
+              startLevel1();
+              return;
+            }
+            continue;
+          }
+
+          // Hapus jika keluar layar
+          if (it.y > canvas.height + 40) {
+            l1State.items.splice(i, 1);
+          }
+        }
+
+        // Gambar Karakter Player (Cewek)
+        const curSprite = l1State.walkFrame === 0 ? SPRITE_GIRL_FRAME1 : SPRITE_GIRL_FRAME2;
+        drawPixelSprite(ctx, curSprite, l1State.playerX, canvas.height - 80, 3.5);
+
+        l1State.animFrame = requestAnimationFrame(update);
+      }
+
+      update();
+    }
+
+    function updateL1Hud() {
+      document.getElementById('hud-score').textContent = `SKOR: ${l1State.score} / ${l1State.targetScore}`;
+      let heartsText = "";
+      for (let i = 0; i < l1State.lives; i++) heartsText += "♥";
+      document.getElementById('hud-lives').textContent = heartsText;
+    }
+
+    /* ==========================================================================
+       7. LEVEL 2: MEMORY MATCH (6 Pasang Kartu Pixel)
+       ========================================================================== */
+    const MEMORY_ITEMS = [
+      { id: 'heart', sprite: SPRITE_HEART },
+      { id: 'cake', sprite: SPRITE_CAKE_ITEM },
+      { id: 'star', sprite: SPRITE_STAR },
+      { id: 'gift', sprite: SPRITE_GIFT },
+      { id: 'flower', sprite: SPRITE_FLOWER },
+      { id: 'moon', sprite: SPRITE_MOON }
+    ];
+
+    let memoryCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let memoryMoves = 0;
+    let isMemoryLocked = false;
+
+    function startLevel2() {
+      const grid = document.getElementById('memory-grid');
+      grid.innerHTML = '';
+      flippedCards = [];
+      matchedPairs = 0;
+      memoryMoves = 0;
+      isMemoryLocked = false;
+      document.getElementById('memory-moves').textContent = "0";
+      document.getElementById('memory-matches').textContent = "0/6";
+
+      // Gandakan kartu jadi 12 (6 pasang) lalu acak
+      const deck = [...MEMORY_ITEMS, ...MEMORY_ITEMS];
+      deck.sort(() => Math.random() - 0.5);
+
+      deck.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.id = item.id;
+        card.dataset.index = index;
+
+        // Sisi Belakang (Tanda Tanya Pixel)
+        const backIcon = document.createElement('div');
+        backIcon.className = 'card-back-icon';
+        backIcon.textContent = "♥";
+
+        // Sisi Depan (Canvas Sprite Pixel)
+        const canvas = document.createElement('canvas');
+        canvas.className = 'card-canvas';
+        canvas.width = 44;
+        canvas.height = 44;
+        const cctx = canvas.getContext('2d');
+        drawPixelSprite(cctx, item.sprite, 4, 4, 3.8);
+
+        card.appendChild(backIcon);
+        card.appendChild(canvas);
+
+        card.addEventListener('click', () => handleCardClick(card, item));
+        grid.appendChild(card);
+      });
+    }
+
+    function handleCardClick(card, item) {
+      if (isMemoryLocked) return;
+      if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+      audio.sfxCardFlip();
+      card.classList.add('flipped');
+      flippedCards.push({ card, item });
+
+      if (flippedCards.length === 2) {
+        memoryMoves++;
+        document.getElementById('memory-moves').textContent = memoryMoves;
+        isMemoryLocked = true;
+
+        const [c1, c2] = flippedCards;
+        if (c1.item.id === c2.item.id) {
+          // Cocok!
+          setTimeout(() => {
+            audio.sfxMatch();
+            c1.card.classList.add('matched');
+            c2.card.classList.add('matched');
+            matchedPairs++;
+            document.getElementById('memory-matches').textContent = `${matchedPairs}/6`;
+            flippedCards = [];
+            isMemoryLocked = false;
+
+            // Selesai Semua Pasangan!
+            if (matchedPairs === 6) {
+              setTimeout(() => {
+                showModal(
+                  "LEVEL 2 CLEAR! 🌟",
+                  "Hebat banget! Ingatanmu tentang kita berdua selalu juara!",
+                  "screen-level3",
+                  SPRITE_STAR
+                );
+              }, 400);
+            }
+          }, 350);
+        } else {
+          // Tidak Cocok
+          setTimeout(() => {
+            audio.sfxCardFlip();
+            c1.card.classList.remove('flipped');
+            c2.card.classList.remove('flipped');
+            flippedCards = [];
+            isMemoryLocked = false;
+          }, 850);
+        }
+      }
+    }
+
+    /* ==========================================================================
+       8. LEVEL 3: GALERI KENANGAN (POLAROID & PLACEHOLDER PIXEL ART)
+       ========================================================================== */
+    let currentPhotoIdx = 0;
+
+    function startLevel3() {
+      currentPhotoIdx = 0;
+      renderPolaroid();
+
+      document.getElementById('btn-prev-photo').onclick = () => {
+        if (currentPhotoIdx > 0) {
+          currentPhotoIdx--;
+          audio.sfxCardFlip();
+          renderPolaroid();
+        }
+      };
+
+      document.getElementById('btn-next-photo').onclick = () => {
+        if (currentPhotoIdx < CONFIG.photos.length - 1) {
+          currentPhotoIdx++;
+          audio.sfxCardFlip();
+          renderPolaroid();
+        }
+      };
+
+      document.getElementById('btn-to-finale').onclick = () => {
+        audio.sfxHeart();
+        switchScreen('screen-level4');
+        startLevel4();
+      };
+    }
+
+    function renderPolaroid() {
+      const photo = CONFIG.photos[currentPhotoIdx];
+      const imgElem = document.getElementById('polaroid-img');
+      const canvasElem = document.getElementById('polaroid-placeholder-canvas');
+      const captionElem = document.getElementById('polaroid-caption');
+      const counterElem = document.getElementById('polaroid-counter');
+
+      counterElem.textContent = `FOTO ${currentPhotoIdx + 1} DARI ${CONFIG.photos.length}`;
+      captionElem.textContent = photo.cap || "Momen manis kita berdua ❤️";
+
+      if (photo.src && photo.src.trim() !== "") {
+        // Tampilkan Gambar Asli
+        imgElem.style.display = 'block';
+        canvasElem.style.display = 'none';
+        imgElem.src = photo.src;
+        imgElem.onerror = () => {
+          // Jika gambar gagal dimuat, fallback ke pixel art placeholder
+          imgElem.style.display = 'none';
+          canvasElem.style.display = 'block';
+          drawPhotoPlaceholder(canvasElem, currentPhotoIdx);
+        };
+      } else {
+        // Gambar Pixel Art Placeholder Estetik
+        imgElem.style.display = 'none';
+        canvasElem.style.display = 'block';
+        drawPhotoPlaceholder(canvasElem, currentPhotoIdx);
+      }
+    }
+
+    // Menggambar Placeholder Polaroid Cantik dengan Pixel Art
+    function drawPhotoPlaceholder(canvas, idx) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Background Gradasi Pixel
+      const themes = [
+        ['#281545', '#48257d', 'KENANGAN #1', SPRITE_HEART],
+        ['#122744', '#214e8a', 'KENANGAN #2', SPRITE_STAR],
+        ['#441b38', '#7a2861', 'KENANGAN #3', SPRITE_CAKE_ITEM],
+        ['#143d39', '#247068', 'KENANGAN #4', SPRITE_FLOWER]
+      ];
+      const theme = themes[idx % themes.length];
+
+      ctx.fillStyle = theme[0];
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Frame Dalam
+      ctx.strokeStyle = theme[1];
+      ctx.lineWidth = 4;
+      ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+      // Bintang kecil di langit foto
+      ctx.fillStyle = "#ffe043";
+      for (let i = 0; i < 15; i++) {
+        const sx = 20 + ((i * 37) % (canvas.width - 40));
+        const sy = 20 + ((i * 53) % (canvas.height - 80));
+        ctx.fillRect(sx, sy, 3, 3);
+      }
+
+      // Sprite Ikon Tengah
+      drawPixelSprite(ctx, theme[3], canvas.width / 2 - 25, 60, 5);
+
+      // Pasangan Siluet Pixel Berdampingan
+      drawPixelSprite(ctx, SPRITE_BOY_FRAME1, canvas.width / 2 - 45, 140, 3.5);
+      drawPixelSprite(ctx, SPRITE_GIRL_FRAME1, canvas.width / 2 + 10, 140, 3.5, true);
+
+      // Banner Text
+      ctx.fillStyle = "#fff8f0";
+      ctx.font = "8px 'Press Start 2P', monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("TARUH FOTO KAMU DI SINI", canvas.width / 2, 235);
+
+      ctx.fillStyle = "#ffe043";
+      ctx.font = "7px 'Press Start 2P', monospace";
+      ctx.fillText("[ Edit CONFIG.photos di script ]", canvas.width / 2, 255);
+    }
+
+    /* ==========================================================================
+       9. LEVEL 4: FINALE ROMANTIS (KUE, TIUP LILIN, FIREWORKS & SURAT)
+       ========================================================================== */
+    let finaleState = {
+      candleLit: true,
+      candleBlown: false,
+      flameFlicker: 0,
+      fireworks: [],
+      floatingHearts: [],
+      girlX: -50,
+      boyX: 410,
+      coupleMet: false,
+      bigHeartScale: 0,
+      animFrame: null
+    };
+
+    function startLevel4() {
+      const canvas = document.getElementById('finale-canvas');
+      const ctx = canvas.getContext('2d');
+      const blowBtn = document.getElementById('btn-blow-candle');
+      const letterBox = document.getElementById('letter-box');
+
+      finaleState.candleLit = true;
+      finaleState.candleBlown = false;
+      finaleState.girlX = -40;
+      finaleState.boyX = canvas.width + 10;
+      finaleState.coupleMet = false;
+      finaleState.bigHeartScale = 0;
+      finaleState.fireworks = [];
+      finaleState.floatingHearts = [];
+      letterBox.style.display = 'none';
+      document.getElementById('cake-controls').style.display = 'block';
+
+      blowBtn.onclick = () => {
+        if (!finaleState.candleLit) return;
+        finaleState.candleLit = false;
+        finaleState.candleBlown = true;
+        audio.sfxBlowCandle();
+
+        // Sembunyikan kontrol tombol tiup lilin
+        document.getElementById('cake-controls').style.display = 'none';
+
+        // Efek ledakan kembang api & karakter berjalan
+        setTimeout(() => {
+          audio.sfxVictory();
+          // Munculkan surat cinta dengan efek mengetik per huruf
+          setTimeout(() => {
+            letterBox.style.display = 'block';
+            typewriterEffect(CONFIG.birthdayMessage, 'letter-content');
+          }, 2000);
+        }, 500);
+      };
+
+      // Tombol Main Lagi
+      document.getElementById('btn-restart-game').onclick = () => {
+        audio.sfxHeart();
+        switchScreen('screen-title');
+        initTitleAnimation();
+      };
+
+      let frame = 0;
+      function loop() {
+        if (currentScreen !== 'screen-level4') return;
+        frame++;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Langit Malam Berbintang
+        ctx.fillStyle = "#0c061a";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Lantai Panggung Lilin
+        ctx.fillStyle = "#1e113a";
+        ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+        ctx.fillStyle = "#3d226b";
+        ctx.fillRect(0, canvas.height - 42, canvas.width, 2);
+
+        // SCENE 1: KUE ULANG TAHUN DENGAN LILIN
+        if (!finaleState.candleBlown) {
+          // Meja Kue
+          ctx.fillStyle = "#4a2912";
+          ctx.fillRect(canvas.width / 2 - 50, canvas.height - 75, 100, 35);
+          ctx.fillStyle = "#663919";
+          ctx.fillRect(canvas.width / 2 - 55, canvas.height - 80, 110, 8);
+
+          // Piring Putih
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(canvas.width / 2 - 45, canvas.height - 84, 90, 6);
+
+          // Kue 3 Tingkat
+          // Layer 1 (Bawah)
+          ctx.fillStyle = "#ff79b0";
+          ctx.fillRect(canvas.width / 2 - 38, canvas.height - 120, 76, 36);
+          ctx.fillStyle = "#fff4e6";
+          ctx.fillRect(canvas.width / 2 - 38, canvas.height - 120, 76, 8);
+
+          // Layer 2 (Tengah)
+          ctx.fillStyle = "#ffd13b";
+          ctx.fillRect(canvas.width / 2 - 26, canvas.height - 150, 52, 30);
+          ctx.fillStyle = "#ff79b0";
+          ctx.fillRect(canvas.width / 2 - 26, canvas.height - 150, 52, 7);
+
+          // Stroberi Hiasan
+          ctx.fillStyle = "#ff2a5f";
+          ctx.fillRect(canvas.width / 2 - 22, canvas.height - 156, 8, 8);
+          ctx.fillRect(canvas.width / 2 + 14, canvas.height - 156, 8, 8);
+
+          // Batang Lilin
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(canvas.width / 2 - 3, canvas.height - 176, 6, 26);
+          ctx.fillStyle = "#4ef2d2";
+          ctx.fillRect(canvas.width / 2 - 3, canvas.height - 168, 6, 4);
+
+          // Api Lilin (Berkedip)
+          if (finaleState.candleLit) {
+            finaleState.flameFlicker += 0.2;
+            const flicker = Math.sin(finaleState.flameFlicker) * 2;
+            ctx.fillStyle = "#ff8a14";
+            ctx.fillRect(canvas.width / 2 - 4, canvas.height - 188 + flicker, 8, 12);
+            ctx.fillStyle = "#ffe043";
+            ctx.fillRect(canvas.width / 2 - 2, canvas.height - 185 + flicker, 4, 7);
+          }
+        } 
+        // SCENE 2: SETELAH LILIN DITIUP (FIREWORKS & LOVE REUNION)
+        else {
+          // Spawn Fireworks
+          if (frame % 22 === 0) {
+            spawnFirework(canvas.width, canvas.height);
+            audio.sfxFirework();
+          }
+
+          // Update & Render Fireworks
+          for (let i = finaleState.fireworks.length - 1; i >= 0; i--) {
+            const fw = finaleState.fireworks[i];
+            fw.x += fw.vx;
+            fw.y += fw.vy;
+            fw.vy += 0.06; // Gravitasi
+            fw.alpha -= 0.015;
+
+            if (fw.alpha <= 0) {
+              finaleState.fireworks.splice(i, 1);
+            } else {
+              ctx.fillStyle = fw.color;
+              ctx.globalAlpha = fw.alpha;
+              ctx.fillRect(fw.x, fw.y, fw.size, fw.size);
+              ctx.globalAlpha = 1.0;
+            }
+          }
+
+          // Karakter Berjalan Mendekat ke Tengah
+          const targetGirlX = canvas.width / 2 - 45;
+          const targetBoyX = canvas.width / 2 + 10;
+          const walkFrame = Math.floor(frame / 8) % 2;
+
+          if (finaleState.girlX < targetGirlX) {
+            finaleState.girlX += 2.0;
+          }
+          if (finaleState.boyX > targetBoyX) {
+            finaleState.boyX -= 2.0;
+          }
+
+          if (finaleState.girlX >= targetGirlX && finaleState.boyX <= targetBoyX) {
+            finaleState.coupleMet = true;
+          }
+
+          // Gambar Cewek (Kiri -> Kanan)
+          const gSprite = (!finaleState.coupleMet && walkFrame === 0) ? SPRITE_GIRL_FRAME1 : SPRITE_GIRL_FRAME2;
+          drawPixelSprite(ctx, gSprite, finaleState.girlX, canvas.height - 90, 3.6);
+
+          // Gambar Cowok (Kanan -> Kiri)
+          const bSprite = (!finaleState.coupleMet && walkFrame === 0) ? SPRITE_BOY_FRAME1 : SPRITE_BOY_FRAME2;
+          drawPixelSprite(ctx, bSprite, finaleState.boyX, canvas.height - 90, 3.6, true);
+
+          // KETIKA MEREKA BERTEMU DI TENGAH:
+          if (finaleState.coupleMet) {
+            // Hati Raksasa Melayang Naik
+            if (finaleState.bigHeartScale < 4.2) {
+              finaleState.bigHeartScale += 0.05;
+            }
+            const heartY = 110 + Math.sin(frame * 0.08) * 8;
+            drawPixelSprite(ctx, SPRITE_HEART, canvas.width / 2 - 20, heartY, finaleState.bigHeartScale);
+
+            // Munculkan Hati Kecil-Kecil Melayang Seperti Balon
+            if (frame % 14 === 0) {
+              finaleState.floatingHearts.push({
+                x: 30 + Math.random() * (canvas.width - 60),
+                y: canvas.height - 20,
+                speed: 1.5 + Math.random() * 1.5,
+                scale: 1.5 + Math.random() * 1.2
+              });
+            }
+
+            for (let h = finaleState.floatingHearts.length - 1; h >= 0; h--) {
+              const heart = finaleState.floatingHearts[h];
+              heart.y -= heart.speed;
+              heart.x += Math.sin(heart.y * 0.05) * 1.2;
+              drawPixelSprite(ctx, SPRITE_HEART, heart.x, heart.y, heart.scale);
+              if (heart.y < -30) {
+                finaleState.floatingHearts.splice(h, 1);
+              }
+            }
+          }
+        }
+
+        finaleState.animFrame = requestAnimationFrame(loop);
+      }
+
+      loop();
+    }
+
+    function spawnFirework(w, h) {
+      const colors = ['#ff4d88', '#ffe043', '#4ef2d2', '#ffffff', '#ff79b0'];
+      const cx = 40 + Math.random() * (w - 80);
+      const cy = 40 + Math.random() * (h - 130);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const count = 28;
+
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 / count) * i;
+        const speed = 1.8 + Math.random() * 3.2;
+        finaleState.fireworks.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          color: color,
+          alpha: 1.0,
+          size: Math.random() > 0.5 ? 4 : 2
+        });
+      }
+    }
+
+    // Efek Mengetik Per Huruf (Typewriter) untuk Surat Cinta
+    function typewriterEffect(text, elementId) {
+      const elem = document.getElementById(elementId);
+      elem.textContent = '';
+      let index = 0;
+      function nextChar() {
+        if (index < text.length) {
+          elem.textContent += text.charAt(index);
+          if (text.charAt(index) !== ' ' && text.charAt(index) !== '\n') {
+            audio.sfxTypewriter();
+          }
+          index++;
+          // Sedikit variasi jeda agar seperti ketikan nyata
+          const delay = text.charAt(index) === '.' || text.charAt(index) === '!' ? 220 : 38;
+          setTimeout(nextChar, delay);
+        }
+      }
+      nextChar();
+    }
+  </script>
+</body>
+</html>
