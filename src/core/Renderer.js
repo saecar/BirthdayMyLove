@@ -8,18 +8,15 @@ export class Renderer {
     this.scene = this.sceneManager.scene;
     this.camera = this.sceneManager.camera;
 
-    this.isMobile = this.sizes ? this.sizes.isMobile : false;
-
     this.init();
   }
 
   init() {
     this.instance = new THREE.WebGLRenderer({
       canvas: this.canvas,
-      antialias: !this.isMobile,
+      antialias: true,
       powerPreference: 'high-performance',
-      alpha: false,
-      precision: this.isMobile ? 'mediump' : 'highp'
+      alpha: false
     });
 
     this.instance.setSize(this.sizes.width, this.sizes.height);
@@ -29,9 +26,9 @@ export class Renderer {
     this.instance.toneMapping = THREE.ACESFilmicToneMapping;
     this.instance.toneMappingExposure = 1.0;
 
-    // Shadow Map configuration: PCFShadowMap on mobile (much faster than PCFSoft), PCFSoftShadowMap on desktop
+    // Shadow Map configuration
     this.instance.shadowMap.enabled = true;
-    this.instance.shadowMap.type = this.isMobile ? THREE.PCFShadowMap : THREE.PCFSoftShadowMap;
+    this.instance.shadowMap.type = THREE.PCFSoftShadowMap;
   }
 
   resize() {

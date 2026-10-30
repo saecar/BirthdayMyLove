@@ -250,15 +250,7 @@ export class SakuraTree extends EventEmitter {
       }
 
       if (child.isMesh) {
-        const isMobile = this.sceneManager?.sizes?.isMobile || false;
-        const isFoliage =
-          this.foliageNodes.includes(child) ||
-          lowerName.includes('leaf') ||
-          lowerName.includes('plane') ||
-          lowerName.includes('petal');
-
-        // On mobile, skip shadow-map generation for foliage leaf planes to preserve 60 FPS
-        child.castShadow = isMobile ? !isFoliage : true;
+        child.castShadow = true;
         child.receiveShadow = true;
 
         // Mark meshes for raycasting & interaction

@@ -37,11 +37,8 @@ export class World {
     // 5. Authentic Japanese Garden Scene (Mount Fuji, Dedicated Birthday Cake & Ema Tablet for Nur Syarifa Syuhada)
     this.japaneseGarden = new JapaneseGarden(this.sceneManager);
 
-    // 6. Falling Sakura Petals (InstancedMesh + GPU Wind Vertex Shader)
-    // Adaptive count: 800 petals on mobile for 60 FPS, 2500 on desktop
-    const isMobile = this.sceneManager?.sizes?.isMobile || false;
-    const petalCount = isMobile ? 800 : 2500;
-    this.petals = new Petals(this.sceneManager, petalCount);
+    // 6. 2500 Falling Sakura Petals (InstancedMesh + GPU Wind Vertex Shader)
+    this.petals = new Petals(this.sceneManager, 2500);
 
     // 7. 3D Floating Polaroids Gallery - attached to tree pivot so ropes sway with branches
     this.polaroids = new PolaroidManager(this.sceneManager);

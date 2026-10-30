@@ -5,21 +5,16 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader.js';
-import { EventEmitter } from '../utils/EventEmitter.js';
 
-export class PostProcessing extends EventEmitter {
+export class PostProcessing {
   constructor(sceneManager) {
-    super();
-
     this.sceneManager = sceneManager;
     this.renderer = this.sceneManager.renderer;
     this.sizes = this.sceneManager.sizes;
     this.scene = this.sceneManager.scene;
     this.camera = this.sceneManager.camera;
 
-    this.isMobile = this.sizes ? this.sizes.isMobile : false;
-    // On mobile devices, bypass heavy post-processing by default for smooth 60 FPS direct WebGL
-    this.isEnabled = !this.isMobile;
+    this.isEnabled = true;
     this.fallbackTriggered = false;
     this.lowFPSCount = 0;
     this.fpsThreshold = 38; // Automatically bypass composer if FPS < 38
@@ -37,7 +32,7 @@ export class PostProcessing extends EventEmitter {
     // 1. Create RenderTarget with HalfFloatType for high dynamic range & smooth gradients
     const renderTarget = new THREE.WebGLRenderTarget(width, height, {
       type: THREE.HalfFloatType,
-      samples: this.isMobile ? 0 : 2 // Avoid costly MSAA resolve passes on mobile GPUs
+      samples: 2 // MSAA on composer buffers
     });
 
     this.composer = new EffectComposer(this.renderer.instance, renderTarget);
@@ -63,7 +58,7 @@ export class PostProcessing extends EventEmitter {
     this.outputPass = new OutputPass();
     this.composer.addPass(this.outputPass);
 
-    console.log(`[PostProcessing] Pipeline initialized (enabled: ${this.isEnabled}, isMobile: ${this.isMobile}): Bloom (0.42) + Vignette + OutputPass.`);
+    console.log('[PostProcessing] Pipeline initialized: Bloom (0.42) + Vignette + OutputPass.');
   }
 
   resize() {
@@ -95,13 +90,11 @@ export class PostProcessing extends EventEmitter {
 
   enable() {
     this.isEnabled = true;
-    this.trigger('change', [true]);
     console.log('[PostProcessing] Enabled.');
   }
 
   disable(reason = 'Manual toggle') {
     this.isEnabled = false;
-    this.trigger('change', [false]);
     console.warn(`[PostProcessing] Disabled: ${reason} Rendering directly via WebGLRenderer.`);
   }
 
@@ -145,6 +138,5 @@ export class PostProcessing extends EventEmitter {
     this.bloomPass = null;
     this.vignettePass = null;
     this.outputPass = null;
-    super.dispose();
   }
 }
